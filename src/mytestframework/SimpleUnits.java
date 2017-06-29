@@ -1,6 +1,6 @@
-package homework170624;
+package mytestframework;
 
-public class SimpleUnit {
+public class SimpleUnits {
 
     public static boolean assertEqual(String actual, String expected) {
         if (actual != null && expected != null)
