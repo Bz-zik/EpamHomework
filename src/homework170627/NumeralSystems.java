@@ -87,6 +87,7 @@ public class NumeralSystems {
         String result = "";
 
         if (num < 2) return "failed: numeral system can't be less than 2";
+        if (num == 10) return Integer.toString(x);
 
         while (x != 0) {
             switch (x % num) {
