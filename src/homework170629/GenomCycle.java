@@ -3,7 +3,7 @@ package homework170629;
 public class GenomCycle {
 
     public static void main(String[] args) {
-        byte[] data = DataGenerator.generate(5000);
+        byte[] data = GenomGenerator.generate(5000);
 
         for (byte b :
                 data) {

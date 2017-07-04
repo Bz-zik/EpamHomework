@@ -2,7 +2,7 @@ package homework170629;
 
 import java.util.Random;
 
-public class DataGenerator {
+public class GenomGenerator {
 
     static final byte[] ALPHABET = {'A', 'C', 'G', 'T'};
 

@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class GenomSort {
 
     public static void main(String[] args) {
-        byte[] data = DataGenerator.generate(5000);
+        byte[] data = GenomGenerator.generate(5000);
 
         for (byte b :
                 data) {
