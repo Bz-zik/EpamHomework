@@ -1,4 +1,4 @@
-package homework170629;
+package datagenerator;
 
 import java.util.Random;
 

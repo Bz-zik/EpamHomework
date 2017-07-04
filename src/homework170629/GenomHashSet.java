@@ -1,5 +1,7 @@
 package homework170629;
 
+import datagenerator.GenomGenerator;
+
 import java.util.HashSet;
 
 public class GenomHashSet {

@@ -1,5 +1,7 @@
 package homework170629;
 
+import datagenerator.GenomGenerator;
+
 public class GenomCycle {
 
     public static void main(String[] args) {
