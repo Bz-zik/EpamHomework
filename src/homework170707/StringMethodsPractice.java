@@ -25,6 +25,7 @@ public class StringMethodsPractice {
         System.out.println("test 5: " + Asserts.assertEqual(trim(s5), "He l l o"));
         // test 6
         System.out.println("test 6: " + Asserts.assertEqual(trim(s6), ""));
+
     }
 
 
@@ -34,9 +35,13 @@ public class StringMethodsPractice {
 
         if (s.indexOf(' ') != 0 && s.lastIndexOf(' ') != s.length() - 1) return s;
 
+        int firstIndex = 0;
+        int lastIndex = s.length() - 1;
 
+        while (s.charAt(firstIndex++) == ' ');
+        while (s.charAt(lastIndex--) == ' ');
 
-        return s;
+        return s.substring(firstIndex - 1, lastIndex + 2);
     }
 
 
