@@ -13,18 +13,18 @@ public class StringMethodsPractice {
         String s5 = "  He l l o  ";
         String s6 = "";
 
-        // test 1
-        System.out.println("test 1: " + Asserts.assertEqual(trim(s), "Hello"));
-        // test 2
-        System.out.println("test 2: " + Asserts.assertEqual(trim(s2), "Hello"));
-        // test 3
-        System.out.println("test 3: " + Asserts.assertEqual(trim(s3), "Hello"));
-        // test 4
-        System.out.println("test 4: " + Asserts.assertEqual(trim(s4), "Hello"));
-        // test 5
-        System.out.println("test 5: " + Asserts.assertEqual(trim(s5), "He l l o"));
-        // test 6
-        System.out.println("test 6: " + Asserts.assertEqual(trim(s6), ""));
+//        System.out.println("trim test 1: " + Asserts.assertEqual(trim(s), "Hello"));
+//        System.out.println("trim test 2: " + Asserts.assertEqual(trim(s2), "Hello"));
+//        System.out.println("trim test 3: " + Asserts.assertEqual(trim(s3), "Hello"));
+//        System.out.println("trim test 4: " + Asserts.assertEqual(trim(s4), "Hello"));
+//        System.out.println("trim test 5: " + Asserts.assertEqual(trim(s5), "He l l o"));
+//        System.out.println("trim test 6: " + Asserts.assertEqual(trim(s6), ""));
+
+
+        System.out.println("replace test 1: " + Asserts.assertEqual(replace(s6, 'e', 'a'), ""));
+        System.out.println("replace test 2: " + Asserts.assertEqual(replace(s2, 'a', 'e'), "Hello"));
+        System.out.println("replace test 3: " + Asserts.assertEqual(replace(s2, 'e', 'a'), "Hallo"));
+        System.out.println("replace test 4: " + Asserts.assertEqual(replace(s2, 'l', 'p'), "Heppo"));
 
     }
 
@@ -42,6 +42,20 @@ public class StringMethodsPractice {
         while (s.charAt(lastIndex--) == ' ');
 
         return s.substring(firstIndex - 1, lastIndex + 2);
+    }
+
+    public static String replace(String s, char oldChar, char newChar) {
+
+        String result = "";
+
+        if (s == null || s.length() == 0) return s;
+
+        if (s.indexOf(oldChar) < 0) return s;
+
+
+
+        return result;
+
     }
 
 
