@@ -25,7 +25,7 @@ public class StringMethodsPractice {
         System.out.println("replace test 2: " + Asserts.assertEqual(replace(s2, 'a', 'e'), "Hello"));
         System.out.println("replace test 3: " + Asserts.assertEqual(replace(s2, 'e', 'a'), "Hallo"));
         System.out.println("replace test 4: " + Asserts.assertEqual(replace(s2, 'l', 'p'), "Heppo"));
-        System.out.println("replace test 5: " + Asserts.assertEqual(replace(s2, 'l', 'l'), "Heppo"));
+        System.out.println("replace test 5: " + Asserts.assertEqual(replace(s2, 'l', 'l'), "Hello"));
 
     }
 
