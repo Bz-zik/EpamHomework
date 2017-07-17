@@ -53,7 +53,10 @@ public class StringMethodsPractice {
 
         if (s.indexOf(oldChar) < 0) return s;
 
-
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != oldChar) result += s.charAt(i);
+            else result += newChar;
+        }
 
         return result;
 
