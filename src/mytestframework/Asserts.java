@@ -31,7 +31,7 @@ public class Asserts {
 
     public static boolean assertEqual(int actual, int expected) {
 
-        boolean result = actual == expected ? true : false;
+        boolean result = actual == expected;
 
         if (!result) System.err.println("Test assertEqual failed: actual " + actual + ", but expected " + expected);
 
@@ -40,16 +40,16 @@ public class Asserts {
 
     public static boolean assertNotEqual(int actual, int expected) {
 
-        boolean result = actual != expected ? true : false;
+        boolean result = actual != expected;
 
         if (!result) System.err.println("Test assertNotEqual failed: actual " + actual + ", but expected " + expected);
 
-        return actual != expected ? true : false;
+        return actual != expected;
     }
 
     public static boolean assertEqual(boolean actual, boolean expected) {
 
-        boolean result = actual == expected ? true : false;
+        boolean result = actual == expected;
 
         if (!result) System.err.println("Test assertEqual failed: actual " + actual + ", but expected " + expected);
 
@@ -58,10 +58,10 @@ public class Asserts {
 
     public static boolean assertNotEqual(boolean actual, boolean expected) {
 
-        boolean result = actual != expected ? true : false;
+        boolean result = actual != expected;
 
         if (!result) System.err.println("Test assertNotEqual failed: actual " + actual + ", but expected " + expected);
 
-        return actual != expected ? true : false;
+        return actual != expected;
     }
 }
