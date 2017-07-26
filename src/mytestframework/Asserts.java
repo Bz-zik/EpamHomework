@@ -6,6 +6,8 @@ public class Asserts {
 
         boolean result = false;
 
+        if (actual == null && expected == null) return true;
+
         if (actual != null && expected != null)
             if (actual.equals(expected)) result = true;
 
