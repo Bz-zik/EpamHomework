@@ -16,6 +16,7 @@ public class UseStringLinkedList {
         System.out.println(list);
 
         list = new StringLinkedList();
+        System.out.println(list);
 
         System.out.println(list.remove("two"));
 
@@ -23,6 +24,16 @@ public class UseStringLinkedList {
         System.out.println(list.remove("two"));
         System.out.println(list.remove("One"));
 
+        System.out.println(list);
+
+        list.add("one");
+        list.add("two");
+        list.add("three");
+
+        System.out.println(list.remove(0));
+        System.out.println(list);
+
+        System.out.println(list.remove(1));
         System.out.println(list);
     }
 
