@@ -45,12 +45,14 @@ class TablePile extends CardPile {
         for (int i = 0; i < 4; i++)
             if (Solitare.suitPile[i].canTake(topCard)) {
                 Solitare.suitPile[i].addCard(topCard);
+                if (top() != null && !top().isFaceUp()) top().flip();
                 return;
             }
         // else see if any other table pile can take card
         for (int i = 0; i < 7; i++)
             if (Solitare.tableau[i].canTake(topCard)) {
                 Solitare.tableau[i].addCard(topCard);
+                if (top() != null && !top().isFaceUp()) top().flip();
                 return;
             }
         // else put it back on our pile
