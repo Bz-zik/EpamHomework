@@ -24,15 +24,15 @@ class DeckPile extends CardPile {
             // then add the card found there
             addCard(pileOne.pop());
             // then put the decks back together
-            while (!pileTwo.empty())
+            while (!pileTwo.isEmpty())
                 pileOne.addCard(pileTwo.pop());
         }
     }
 
     public void select(int tx, int ty) {
-        if (empty())
+        if (isEmpty())
         {
-            while (!Solitare.discardPile.empty())
+            while (!Solitare.discardPile.isEmpty())
             {
                 Solitare.deckPile.addCard(Solitare.discardPile.pop());
                 Solitare.deckPile.top().flip();

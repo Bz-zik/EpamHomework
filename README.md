@@ -6,3 +6,6 @@ read: git-bisect
 
 поразрядная сортировка (Radix Sort) быстрее чем qSort
 написать поразрядную сортировку
+
+
+RuntimeException -> Unchecked

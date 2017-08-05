@@ -7,13 +7,13 @@ class DiscardPile extends CardPile {
     }
 
     public void addCard(Card aCard) {
-        if (!aCard.faceUp())
+        if (!aCard.isFaceUp())
             aCard.flip();
         super.addCard(aCard);
     }
 
     public void select(int tx, int ty) {
-        if (empty())
+        if (isEmpty())
             return;
         Card topCard = pop();
         for (int i = 0; i < 4; i++)

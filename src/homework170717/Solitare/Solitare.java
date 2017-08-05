@@ -4,11 +4,11 @@ import java.applet.Applet;
 import java.awt.*;
 
 public class Solitare extends Applet {
+    static CardPile allPiles[];
+    static SuitPile suitPile[];
+    static TablePile tableau[];
     static DeckPile deckPile;
     static DiscardPile discardPile;
-    static TablePile tableau[];
-    static SuitPile suitPile[];
-    static CardPile allPiles[];
 
     public void init() {
         // first allocate the arrays

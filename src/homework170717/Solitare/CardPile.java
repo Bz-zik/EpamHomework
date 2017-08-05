@@ -23,7 +23,7 @@ class CardPile {
         return firstCard;
     }
 
-    public boolean empty() {
+    public boolean isEmpty() {
         return firstCard == null;
     }
 

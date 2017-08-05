@@ -16,11 +16,11 @@ class TablePile extends CardPile {
     }
 
     public boolean canTake(Card aCard) {
-        if (empty())
-            return aCard.rank() == 12;
+        if (isEmpty())
+            return aCard.getRank() == 12;
         Card topCard = top();
-        return (aCard.color() != topCard.color()) &&
-                (aCard.rank() == topCard.rank() - 1);
+        return (aCard.getColor() != topCard.getColor()) &&
+                (aCard.getRank() == topCard.getRank() - 1);
     }
 
     public boolean includes(int tx, int ty) {
@@ -30,17 +30,17 @@ class TablePile extends CardPile {
     }
 
     public void select(int tx, int ty) {
-        if (empty())
+        if (isEmpty())
             return;
 
         // if face down, then flip
         Card topCard = top();
-        if (!topCard.faceUp()) {
+        if (!topCard.isFaceUp()) {
             topCard.flip();
             return;
         }
 
-        // else see if any suit pile can take card
+        // else see if any getSuit pile can take card
         topCard = pop();
         for (int i = 0; i < 4; i++)
             if (Solitare.suitPile[i].canTake(topCard)) {
