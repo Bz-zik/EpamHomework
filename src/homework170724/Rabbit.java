@@ -2,7 +2,7 @@ package homework170724;
 
 public class Rabbit implements Pet {
 
-    Brain brain = new Hungry();
+    private Brain brain = new Hungry();
 
     private class Hungry implements Brain {
         @Override
