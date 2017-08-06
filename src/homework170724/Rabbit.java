@@ -2,17 +2,6 @@ package homework170724;
 
 public class Rabbit implements Pet {
 
-    public static void main(String[] args) {
-        Rabbit rabbit = new Rabbit();
-        rabbit.play();
-        System.out.println("-----");
-        rabbit.feed();
-        System.out.println("-----");
-        rabbit.feed();
-        System.out.println("-----");
-        rabbit.play();
-    }
-
     Brain brain = new Hungry();
 
     private class Hungry implements Brain {
