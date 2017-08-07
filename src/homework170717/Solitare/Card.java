@@ -18,6 +18,9 @@ class Card {
     Card link;
     //private static String names[] = {"A", "2", "3", "4", "5", "6",
     //	"7", "8", "9", "10", "J", "Q", "K"};
+    private static final String names[] = {"A", "2", "3", "4", "5", "6",
+            "7", "8", "9", "10", "J", "Q", "K"};
+
     // data fields
     private boolean faceup;
     private int rank;
@@ -53,8 +56,7 @@ class Card {
     }
 
     public void draw(Graphics g, int x, int y) {
-        String names[] = {"A", "2", "3", "4", "5", "6",
-                "7", "8", "9", "10", "J", "Q", "K"};
+
         // clear rectangle, draw border
         g.clearRect(x, y, width, height);
         g.setColor(Color.black);

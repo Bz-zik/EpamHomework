@@ -11,6 +11,7 @@ public class Solitare extends Applet {
     static DiscardPile discardPile;
 
     public void init() {
+        resize(500, 500);
         // first allocate the arrays
         allPiles = new CardPile[13];
         suitPile = new SuitPile[4];
