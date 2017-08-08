@@ -16,6 +16,7 @@ class Card {
     final static int club = 3;
 
     Card link;
+
     //private static String names[] = {"A", "2", "3", "4", "5", "6",
     //	"7", "8", "9", "10", "J", "Q", "K"};
     private static final String names[] = {"A", "2", "3", "4", "5", "6",
@@ -25,6 +26,7 @@ class Card {
     private boolean faceup;
     private int rank;
     private int suit;
+
     // constructor
     Card(int sv, int rv) {
         suit = sv;
@@ -50,9 +52,7 @@ class Card {
     }
 
     public int getColor() {
-        if (getSuit() == heart || getSuit() == diamond)
-            return red;
-        return black;
+        return getSuit() == heart || getSuit() == diamond ? red : black;
     }
 
     public void draw(Graphics g, int x, int y) {
