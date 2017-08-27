@@ -5,23 +5,36 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class Dictionary<T> implements Iterable<Dictionary<T>.Pair> {
+public class Dictionary<K, V> implements Iterable<Dictionary<K, V>.Pair> {
 
     private static final int MAX = 3;
+    private int size = 0;
 
     public class Pair {
-        T key;
-        T value;
-        public Pair(T key2, T value2) {
-            key = key2;
-            value = value2;
+        K key;
+        V value;
+        public Pair(K key, V value) {
+            this.key = key;
+            this.value = value;
         }
     }
 
 
     List<Pair>[] data = new List[MAX];
 
-    public void put(T key, T value) {
+    public V get(K key) {
+        Pair pair = getPair(key);
+        return pair == null ? null : pair.value;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void put(K key, V value) {
+
+        if (size >= data.length) resize();
+
         int index = hash(key);
         if (data[index] == null) {
             data[index] = new ArrayList<>();
@@ -31,6 +44,7 @@ public class Dictionary<T> implements Iterable<Dictionary<T>.Pair> {
 
         if (pair == null) {
             data[index].add(new Pair(key, value));
+            size++;
             return;
         }
 
@@ -38,16 +52,15 @@ public class Dictionary<T> implements Iterable<Dictionary<T>.Pair> {
 
     }
 
-    private int hash(T key) {
-        return key.hashCode() & 0x7FFFFFFF % data.length;
+    public boolean remove(K key) {
+        int index = hash(key);
+        if (data[index] != null) {
+            return data[index].remove(getPair(key));
+        }
+        return false;
     }
 
-    public T get(T key) {
-        Pair pair = getPair(key);
-        return pair == null ? null : pair.value;
-    }
-
-    private Pair getPair(T key) {
+    private Pair getPair(K key) {
         int index = hash(key);
         List<Pair> list = data[index];
         if (list == null) { // guard condition
@@ -60,6 +73,20 @@ public class Dictionary<T> implements Iterable<Dictionary<T>.Pair> {
         }
 
         return null;
+    }
+
+    private void resize() {
+        Dictionary<K, V> dictionary = new Dictionary<>();
+        dictionary.data = new List[data.length*3/2];
+        for (Pair pair : this) {
+            dictionary.put(pair.key, pair.value);
+        }
+        data = dictionary.data;
+    }
+
+
+    private int hash(K key) {
+        return key.hashCode() & 0x7FFFFFFF % data.length;
     }
 
     @Override

@@ -26,3 +26,37 @@ __Mergesort (делим на части и рекурсивно (не обяза
 __Quicksort (in-place - не требуется промежут. пространства & no stable) (берем очередной элемент и сразу ставим его туда, где он будет в конечном отсортированном массиве) в лучшем случае n*lg(n) сравнений, в худшем 1/2*n^2
 
 __Radix sort
+
+
+
+/* 21.08.17
+Functional Descriptors
+Predicate<T>             T           ->  boolean
+BiPredicate<T, V>       (T, V)       -> boolean
+Consumer<T>              T           -> void
+Suplier<T>              ()           -> T
+Function<T, R>           T           -> R
+UnaryOperator<T>         T           -> T
+BiFunction<T, U, R>     (T, U)       -> R
+BinaryOperator<T>       (T, T)       -> T
+
+ */
+
+
+
+ /*
+ MethodReferences
+
+ (args) -> ClassName.staticMethod(args);
+ ==
+ ClassName::staticMethod;
+
+
+ (arg, rest...) -> arg.instanceMethod(rest);  // arg - то, к чему применяется; rest - параметры
+ ==
+ ClassName::instanceMethod;
+
+ (args) -> expr.instanceMethod(args);
+ ==
+ expr::instanceMethod;
+ */
