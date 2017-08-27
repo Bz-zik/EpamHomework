@@ -20,7 +20,7 @@ public class Dictionary<K, V> implements Iterable<Dictionary<K, V>.Pair> {
     }
 
 
-    List<Pair>[] data = new List[MAX];
+    private List<Pair>[] data = new List[MAX];
 
     public V get(K key) {
         Pair pair = getPair(key);
@@ -54,14 +54,15 @@ public class Dictionary<K, V> implements Iterable<Dictionary<K, V>.Pair> {
 
     public boolean remove(K key) {
         int index = hash(key);
-        if (data[index] != null) {
-            return data[index].remove(getPair(key));
-        }
-        return false;
+        return data[index] != null && data[index].remove(getPair(key));
     }
 
     private Pair getPair(K key) {
         int index = hash(key);
+        return getPair(index, key);
+    }
+
+    private Pair getPair(int index, K key) {
         List<Pair> list = data[index];
         if (list == null) { // guard condition
             return null;
