@@ -48,7 +48,7 @@ BinaryOperator<T>       (T, T)       -> T
  MethodReferences
 
  (args) -> ClassName.staticMethod(args);
- ==
+ == (то же самое, что)
  ClassName::staticMethod;
 
 

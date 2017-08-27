@@ -54,7 +54,12 @@ public class Dictionary<K, V> implements Iterable<Dictionary<K, V>.Pair> {
 
     public boolean remove(K key) {
         int index = hash(key);
-        return data[index] != null && data[index].remove(getPair(key));
+        boolean result = false;
+        if (data[index] != null) {
+            result = data[index].remove(getPair(key));
+            if (result) size--;
+        }
+        return result;
     }
 
     private Pair getPair(K key) {
@@ -88,6 +93,16 @@ public class Dictionary<K, V> implements Iterable<Dictionary<K, V>.Pair> {
 
     private int hash(K key) {
         return key.hashCode() & 0x7FFFFFFF % data.length;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+
+        for(Pair pair : this) {
+            string.append(pair.key).append(" : ").append(pair.value).append("\n");
+        }
+        return string.toString();
     }
 
     @Override
