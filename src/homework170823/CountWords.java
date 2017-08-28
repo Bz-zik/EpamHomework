@@ -12,8 +12,18 @@ public class CountWords {
 
         HashMap<String, Integer> map = countWords(list);
         print(map);
+        map.clear();
+
+        // with Functional Interface
+//        WordsCountable countFI = (list1) -> CountWords.countWords(list1);
+        WordsCountable countFI = CountWords::countWords;
+        map = countFI.count(list);
+        print(map);
+        map.clear();
+
 
     }
+
 
     private static HashMap<String, Integer> countWords(List<String> list) {
         HashMap<String, Integer> map = new HashMap<>();
@@ -33,4 +43,8 @@ public class CountWords {
         map.entrySet().forEach(pair -> System.out.println(pair.getKey() + " : " + pair.getValue()));
     }
 
+    @FunctionalInterface
+    interface WordsCountable {
+        HashMap<String, Integer> count(List<String> list);
+    }
 }
