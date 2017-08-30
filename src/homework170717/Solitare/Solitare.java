@@ -9,6 +9,7 @@ public class Solitare extends Applet {
     static TablePile tableau[];
     static DeckPile deckPile;
     static DiscardPile discardPile;
+    static SelectPile selectingPile;
 
     public void init() {
         resize(500, 500);
@@ -32,13 +33,39 @@ public class Solitare extends Applet {
             allPiles[i].display(g);
     }
 
+
     public boolean mouseDown(Event evt, int x, int y) {
-        for (int i = 0; i < 13; i++)
+
+        for (int i = 0; i < 13; i++) {
             if (allPiles[i].includes(x, y)) {
-                allPiles[i].select(x, y);
+                if (i == 0) {
+                    allPiles[i].select(x, y);
+                }
+                else if (!CardPile.wasSelect) {
+                    CardPile.thisPileWasSelect = allPiles[i];
+                    selectingPile = SelectPile.select(allPiles[i], x, y);
+                }
+                else {
+                    if (allPiles[i].canTake(selectingPile.top())) {
+                        while (!selectingPile.isEmpty()) {
+                            Card pop = selectingPile.pop();
+                            if (!pop.isFaceUp()) pop.flip();
+                            allPiles[i].addCard(pop);
+                            CardPile.thisPileWasSelect.pop();
+                        }
+                        if (CardPile.thisPileWasSelect.top() != null && !CardPile.thisPileWasSelect.top().isFaceUp()) {
+                            CardPile.thisPileWasSelect.top().flip();
+                        }
+                    }
+                    CardPile.wasSelect = false;
+                    selectingPile = null;
+                }
+
                 repaint();
                 return true;
             }
+        }
         return true;
     }
+
 }

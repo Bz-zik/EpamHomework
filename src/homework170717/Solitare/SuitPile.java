@@ -2,8 +2,10 @@ package homework170717.Solitare;
 
 class SuitPile extends CardPile {
 
+
     SuitPile(int x, int y) {
         super(x, y);
+        countOfCardsInPile = 1;
     }
 
     public boolean canTake(Card aCard) {

@@ -5,6 +5,7 @@ class DeckPile extends CardPile {
     DeckPile(int x, int y) {
         // first initialize parent
         super(x, y);
+        countOfCardsInPile = 1;
         // then create the new deck
         // first put them into a local pile
         CardPile pileOne = new CardPile(0, 0);

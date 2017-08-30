@@ -9,6 +9,17 @@ class CardPile {
 
     // access to cards are not overridden
     protected int y;
+
+    // countOfCardsInPile cards in pile
+    protected int countOfCardsInPile;
+
+    // check, if we selected pile
+    protected static boolean wasSelect = false;
+
+    // pile which was select
+    protected static CardPile thisPileWasSelect;
+
+
     private Card firstCard;
 
     CardPile(int xl, int yl) {
@@ -21,6 +32,11 @@ class CardPile {
 
     public Card top() {
         return firstCard;
+    }
+
+    public void addCard(Card aCard) {
+        aCard.link = firstCard;
+        firstCard = aCard;
     }
 
     public boolean isEmpty() {
@@ -37,23 +53,18 @@ class CardPile {
     }
 
     public boolean includes(int tx, int ty) {
-        return x <= tx && tx <= x + Card.width &&
-                y <= ty && ty <= y + Card.height;
+        return x <= tx && tx <= x + Card.WIDTH &&
+                y <= ty && ty <= y + Card.HEIGHT;
     }
 
     public void select(int tx, int ty) {
         // do nothing
     }
 
-    public void addCard(Card aCard) {
-        aCard.link = firstCard;
-        firstCard = aCard;
-    }
-
     public void display(Graphics g) {
         g.setColor(Color.black);
         if (firstCard == null)
-            g.drawRect(x, y, Card.width, Card.height);
+            g.drawRect(x, y, Card.WIDTH, Card.HEIGHT);
         else
             firstCard.draw(g, x, y);
     }

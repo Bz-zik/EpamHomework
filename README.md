@@ -31,14 +31,16 @@ __Radix sort
 
 /* 21.08.17
 Functional Descriptors
-Predicate<T>             T           ->  boolean
-BiPredicate<T, V>       (T, V)       -> boolean
-Consumer<T>              T           -> void
-Suplier<T>              ()           -> T
-Function<T, R>           T           -> R
-UnaryOperator<T>         T           -> T
-BiFunction<T, U, R>     (T, U)       -> R
-BinaryOperator<T>       (T, T)       -> T
+Predicate<T>            test        T       ->  boolean
+BiPredicate<T, V>       test        (T, V)  -> boolean
+Consumer<T>             accept      T       -> void
+Suplier<T>              get         ()      -> T
+Function<T, R>          apply       T       -> R
+UnaryOperator<T>        apply       T       -> T
+BiFunction<T, U, R>     apply       (T, U)  -> R
+BinaryOperator<T>       apply       (T, T)  -> T
+Runnable                run         ()      -> void
+Callable<V>             call        ()      -> void
 
  */
 
@@ -60,3 +62,9 @@ BinaryOperator<T>       (T, T)       -> T
  ==
  expr::instanceMethod;
  */
+ 
+ 
+ Виртуальная машина работает до тех пор, пока рабоатет хотя бы один поток НЕ демон.
+ Volatile - записывает значения в RAM, откуда оно видно для всех потоков сразу (когда один поток делает изменения, другой это сразу видит)
+
+в synchronized должно быть только чтение данных или изменение, а выполнение задачи в другом месте

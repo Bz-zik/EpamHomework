@@ -15,6 +15,19 @@ class TablePile extends CardPile {
         top().flip();
     }
 
+    @Override
+    public void addCard(Card aCard) {
+        countOfCardsInPile++;
+        super.addCard(aCard);
+    }
+
+    @Override
+    public Card pop() {
+        Card card = super.pop();
+        if (card != null) countOfCardsInPile--;
+        return card;
+    }
+
     public boolean canTake(Card aCard) {
         if (isEmpty())
             return aCard.getRank() == 12;
@@ -25,38 +38,8 @@ class TablePile extends CardPile {
 
     public boolean includes(int tx, int ty) {
         // don't test bottom of card
-        return x <= tx && tx <= x + Card.width &&
-                y <= ty;
-    }
-
-    public void select(int tx, int ty) {
-        if (isEmpty())
-            return;
-
-        // if face down, then flip
-        Card topCard = top();
-        if (!topCard.isFaceUp()) {
-            topCard.flip();
-            return;
-        }
-
-        // else see if any getSuit pile can take card
-        topCard = pop();
-        for (int i = 0; i < 4; i++)
-            if (Solitare.suitPile[i].canTake(topCard)) {
-                Solitare.suitPile[i].addCard(topCard);
-                if (top() != null && !top().isFaceUp()) top().flip();
-                return;
-            }
-        // else see if any other table pile can take card
-        for (int i = 0; i < 7; i++)
-            if (Solitare.tableau[i].canTake(topCard)) {
-                Solitare.tableau[i].addCard(topCard);
-                if (top() != null && !top().isFaceUp()) top().flip();
-                return;
-            }
-        // else put it back on our pile
-        addCard(topCard);
+        return x <= tx && tx <= x + Card.WIDTH &&
+                y <= ty && ty <= y + (countOfCardsInPile -1)*Card.HEIGHT/2 + Card.HEIGHT;
     }
 
     private int stackDisplay(Graphics g, Card aCard) {

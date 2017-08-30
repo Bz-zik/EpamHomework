@@ -4,16 +4,16 @@ import java.awt.*;
 
 class Card {
     // data fields for colors and suits
-    final static int width = 50;
-    final static int height = 70;
+    final static int WIDTH = 50;
+    final static int HEIGHT = 70;
 
-    final static int red = 0;
-    final static int black = 1;
+    private final static int RED = 0;
+    private final static int BLACK = 1;
 
-    final static int heart = 0;
-    final static int spade = 1;
-    final static int diamond = 2;
-    final static int club = 3;
+    private final static int HEART = 0;
+    private final static int SPADE = 1;
+    private final static int DIAMOND = 2;
+    private final static int CLUB = 3;
 
     Card link;
 
@@ -52,42 +52,42 @@ class Card {
     }
 
     public int getColor() {
-        return getSuit() == heart || getSuit() == diamond ? red : black;
+        return getSuit() == HEART || getSuit() == DIAMOND ? RED : BLACK;
     }
 
     public void draw(Graphics g, int x, int y) {
 
         // clear rectangle, draw border
-        g.clearRect(x, y, width, height);
+        g.clearRect(x, y, WIDTH, HEIGHT);
         g.setColor(Color.black);
-        g.drawRect(x, y, width, height);
+        g.drawRect(x, y, WIDTH, HEIGHT);
         // draw body of card
         if (isFaceUp()) {
-            if (getColor() == red)
+            if (getColor() == RED)
                 g.setColor(Color.red);
             else
                 g.setColor(Color.blue);
             g.drawString(names[getRank()], x + 3, y + 15);
-            if (getSuit() == heart) {
+            if (getSuit() == HEART) {
                 g.drawLine(x + 25, y + 30, x + 35, y + 20);
                 g.drawLine(x + 35, y + 20, x + 45, y + 30);
                 g.drawLine(x + 45, y + 30, x + 25, y + 60);
                 g.drawLine(x + 25, y + 60, x + 5, y + 30);
                 g.drawLine(x + 5, y + 30, x + 15, y + 20);
                 g.drawLine(x + 15, y + 20, x + 25, y + 30);
-            } else if (getSuit() == spade) {
+            } else if (getSuit() == SPADE) {
                 g.drawLine(x + 25, y + 20, x + 40, y + 50);
                 g.drawLine(x + 40, y + 50, x + 10, y + 50);
                 g.drawLine(x + 10, y + 50, x + 25, y + 20);
                 g.drawLine(x + 23, y + 45, x + 20, y + 60);
                 g.drawLine(x + 20, y + 60, x + 30, y + 60);
                 g.drawLine(x + 30, y + 60, x + 27, y + 45);
-            } else if (getSuit() == diamond) {
+            } else if (getSuit() == DIAMOND) {
                 g.drawLine(x + 25, y + 20, x + 40, y + 40);
                 g.drawLine(x + 40, y + 40, x + 25, y + 60);
                 g.drawLine(x + 25, y + 60, x + 10, y + 40);
                 g.drawLine(x + 10, y + 40, x + 25, y + 20);
-            } else if (getSuit() == club) {
+            } else if (getSuit() == CLUB) {
                 g.drawOval(x + 20, y + 25, 10, 10);
                 g.drawOval(x + 25, y + 35, 10, 10);
                 g.drawOval(x + 15, y + 35, 10, 10);
