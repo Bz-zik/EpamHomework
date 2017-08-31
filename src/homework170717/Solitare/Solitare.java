@@ -35,8 +35,11 @@ public class Solitare extends Applet {
 
 
     public boolean mouseDown(Event evt, int x, int y) {
-
-        for (int i = 0; i < 13; i++) {
+        if (evt.metaDown()) {
+            autoPile();
+            repaint();
+        }
+        else for (int i = 0; i < 13; i++) {
             if (allPiles[i].includes(x, y)) {
                 if (i == 0) {
                     allPiles[i].select(x, y);
@@ -62,10 +65,33 @@ public class Solitare extends Applet {
                 }
 
                 repaint();
-                return true;
             }
         }
         return true;
+    }
+
+    private void autoPile() {
+        boolean haveChange = true;
+        while (haveChange) {
+            haveChange = false;
+            for (int i = 6; i < 13; i++) {
+                for (int j = 2; j < 6; j++) {
+                    if (!allPiles[i].isEmpty() && allPiles[j].canTake(allPiles[i].top())) {
+                        Card current = allPiles[i].pop();
+                        allPiles[j].addCard(current);
+                        if (allPiles[i].top() != null && !allPiles[i].top().isFaceUp()) {
+                            allPiles[i].top().flip();
+                        }
+                        haveChange = true;
+                    }
+                    if (!allPiles[1].isEmpty() && allPiles[j].canTake(allPiles[1].top())) {
+                        Card current = allPiles[1].pop();
+                        allPiles[j].addCard(current);
+                        haveChange = true;
+                    }
+                }
+            }
+        }
     }
 
 }

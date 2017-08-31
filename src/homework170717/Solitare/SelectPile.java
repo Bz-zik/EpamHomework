@@ -15,13 +15,14 @@ public class SelectPile extends CardPile {
         Card current = pile.top();
 
         for (int i = 0; i < count; i++) {
-            if (current != null) {
+            if (current != null && current.isFaceUp()) {
                 select.addCard(new Card(current.getSuit(), current.getRank()));
                 current = current.link;
             }
+            else return null;
         }
 
-            wasSelect = true;
+        wasSelect = true;
         return select;
     }
 
