@@ -10,8 +10,11 @@ public class SelectPile extends CardPile {
     static SelectPile select(CardPile pile, int x, int y) {
 
         int count = countOfSelectingCards(pile, y);
+        int otherCount = pile.countOfCardsInPile - count;
+        x = pile.x;
+        y = pile.y + otherCount*(Card.HEIGHT/2);
 
-        SelectPile select = new SelectPile(0, 0);
+        SelectPile select = new SelectPile(x, y);
         Card current = pile.top();
 
         for (int i = 0; i < count; i++) {
