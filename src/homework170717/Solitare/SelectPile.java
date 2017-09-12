@@ -1,7 +1,10 @@
 package homework170717.Solitare;
 
+import java.awt.*;
+
 public class SelectPile extends CardPile {
 
+    static int count = 0;
 
     SelectPile(int xl, int yl) {
         super(xl, yl);
@@ -9,7 +12,7 @@ public class SelectPile extends CardPile {
 
     static SelectPile select(CardPile pile, int x, int y) {
 
-        int count = countOfSelectingCards(pile, y);
+        count = countOfSelectingCards(pile, y);
         int otherCount = pile.countOfCardsInPile - count;
         x = pile.x;
         y = pile.y + otherCount*(Card.HEIGHT/2);
@@ -27,6 +30,14 @@ public class SelectPile extends CardPile {
 
         wasSelect = true;
         return select;
+    }
+
+    @Override
+    public void display(Graphics g) {
+        if (CardPile.wasSelect) {
+            g.setColor(Color.red);
+            g.drawRect(this.x, this.y, Card.WIDTH, (count-1)*Card.HEIGHT/2 + Card.HEIGHT);
+        }
     }
 
     private static int countOfSelectingCards(CardPile pile, int y) {

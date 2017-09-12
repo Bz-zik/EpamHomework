@@ -31,6 +31,8 @@ public class Solitare extends Applet {
     public void paint(Graphics g) {
         for (int i = 0; i < 13; i++)
             allPiles[i].display(g);
+        if (selectingPile != null) selectingPile.display(g);
+
     }
 
 
